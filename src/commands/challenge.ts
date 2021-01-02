@@ -55,6 +55,8 @@ module.exports = {
     }
 
     if (participant.completedChallenges.get(id) === "true") {
+      console.log(`You have already completed challenge ${id}.`);
+      
       message.channel.send(`You have already completed challenge ${id}.`);
       return;
     }
@@ -92,9 +94,13 @@ module.exports = {
       embed.setColor("#000000");
     }
 
+    console.log(embed);
+    
     proofChannel.send(embed).then((m: Message) => {
       m.react("✅");
     });
+    console.log(`<@${message.author.id}>, Your challenge has been submited by review from staff. Please be patient as this can take some time.\nContact any staff with the **Monthly Challenges Team** role if you have any questions!`);
+    
     message.channel.send(
       `<@${message.author.id}>, Your challenge has been submited by review from staff. Please be patient as this can take some time.\nContact any staff with the **Monthly Challenges Team** role if you have any questions!`
     );
